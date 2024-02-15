@@ -1,0 +1,1 @@
+This demonstrates how to use Big Data Cloud API for reverse GPS. Send the GPS (x,y) and returns the name of the city. It uses Retrofit for Https and observers for updating the UI fragments. It is a good demo app for getting started with API request/ response.

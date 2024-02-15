@@ -1,35 +1,21 @@
 package com.inzhood.retrofitbigcloud.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.inzhood.retrofitbigcloud.BuildConfig
 import com.inzhood.retrofitbigcloud.bdc.BdcLocationResponse
 import com.inzhood.retrofitbigcloud.bdc.BdcRepository
-import com.inzhood.retrofitbigcloud.bdc.BigDataCloudApi
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val repository: BdcRepository) : ViewModel() {
+//class HomeViewModel : ViewModel() {
     private val apiKeyValue = MutableLiveData<String>()
     init {
 
         val apiKey = BuildConfig.BDC_API_KEY
         apiKeyValue.value = apiKey
-    }
-    // this is considered poor programming practice, apiService and repository should not be in viewmodel
-    private val apiService: BigDataCloudApi by lazy {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api-bdc.net/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        retrofit.create(BigDataCloudApi::class.java)
-    }
-
-    private val repository by lazy {
-        BdcRepository(apiService)
     }
     private val _locationData = MutableLiveData<BdcLocationResponse?>()
     val locationData = MutableLiveData<BdcLocationResponse?>()
@@ -44,5 +30,13 @@ class HomeViewModel : ViewModel() {
             }
 
         }
+    }
+}
+class HomeViewModelFactory(private val repository: BdcRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            return HomeViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unsupported ViewModel class")
     }
 }

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Retrofit Big Cloud</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="fetching_wait">Fetching name of city, please wait…</string>
+    <string name="get_city_name">Get City Name</string>
+    <string name="gps_location">GPS Location</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+</resources>

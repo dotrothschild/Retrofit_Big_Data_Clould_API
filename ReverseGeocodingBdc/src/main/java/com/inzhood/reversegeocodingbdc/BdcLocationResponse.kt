@@ -1,4 +1,4 @@
-package com.inzhood.retrofitbigcloud.bdc
+package com.inzhood.reversegeocodingbdc
 
 data class BdcLocationResponse(
     val fullResponse: String,

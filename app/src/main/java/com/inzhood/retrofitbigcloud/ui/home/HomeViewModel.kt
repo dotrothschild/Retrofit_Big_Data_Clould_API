@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.inzhood.retrofitbigcloud.BuildConfig
-import com.inzhood.retrofitbigcloud.bdc.BdcLocationResponse
-import com.inzhood.retrofitbigcloud.bdc.BdcRepository
+import com.inzhood.reversegeocodingbdc.BdcLocationResponse
+import com.inzhood.reversegeocodingbdc.BdcRepository
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: BdcRepository) : ViewModel() {

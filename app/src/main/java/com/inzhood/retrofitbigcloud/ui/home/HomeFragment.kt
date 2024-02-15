@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.inzhood.retrofitbigcloud.DependencyProvider
 import com.inzhood.retrofitbigcloud.R
 import com.inzhood.retrofitbigcloud.databinding.FragmentHomeBinding
+import com.inzhood.reversegeocodingbdc.DependencyProvider
 
 class HomeFragment : Fragment() {
 

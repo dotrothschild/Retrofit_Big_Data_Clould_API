@@ -1,8 +1,6 @@
-package com.inzhood.retrofitbigcloud
+package com.inzhood.reversegeocodingbdc
 
 import android.app.Application
-import com.inzhood.retrofitbigcloud.bdc.BdcRepository
-import com.inzhood.retrofitbigcloud.bdc.BigDataCloudApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

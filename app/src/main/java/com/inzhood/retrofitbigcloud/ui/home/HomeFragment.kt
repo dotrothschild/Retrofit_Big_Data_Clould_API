@@ -11,7 +11,7 @@ import com.inzhood.retrofitbigcloud.DependencyProvider
 import com.inzhood.retrofitbigcloud.R
 import com.inzhood.retrofitbigcloud.databinding.FragmentHomeBinding
 
-class HomeFragment  : Fragment() {
+class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -44,7 +44,7 @@ class HomeFragment  : Fragment() {
             textView.text = getString(R.string.fetching_wait)
             binding.buttonGetCityName.isEnabled = false
             try {
-                val latitude =binding.latitude.text.toString().toDouble()
+                val latitude = binding.latitude.text.toString().toDouble()
                 val longitude = binding.longitude.text.toString().toDouble()
                 homeViewModel.fetchLocationName(latitude, longitude)
             } catch (e: IllegalArgumentException) {

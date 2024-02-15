@@ -2,12 +2,12 @@ package com.inzhood.retrofitbigcloud.bdc
 
 import androidx.lifecycle.MutableLiveData
 
-class BdcRepository (private val apiService: BigDataCloudApi) {
-
-    suspend fun getLocationData(latitude: Double, longitude: Double, apiKey: String,
-                                cityLiveData: MutableLiveData<String>): BdcLocationResponse? {
+class BdcRepository(private val apiService: BigDataCloudApi) {
+    suspend fun getLocationData(
+        latitude: Double, longitude: Double, apiKey: String,
+        cityLiveData: MutableLiveData<String>
+    ): BdcLocationResponse? {
         return try {
-
             val response = apiService.getReverseGeocode(latitude, longitude, "en", apiKey)
             if (response.isSuccessful) {
                 // one line only original:  response.body()
@@ -22,7 +22,7 @@ class BdcRepository (private val apiService: BigDataCloudApi) {
                 }
                 responseBody
             } else {
-                null
+                null // happens when bad API key submitted
             }
         } catch (e: Exception) {
             e.message

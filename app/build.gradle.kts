@@ -6,7 +6,7 @@ plugins {
 android {
     namespace = "com.inzhood.retrofitbigcloud"
     compileSdk = 34
-    android.buildFeatures.buildConfig=true
+    android.buildFeatures.buildConfig = true
 
     defaultConfig {
         applicationId = "com.inzhood.retrofitbigcloud"
@@ -30,8 +30,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
 
+            buildConfigField("String", "BDC_API_KEY", "\"${project.findProperty("BDC_API_KEY_RELEASE")}\"")
+        }
     }
 
 

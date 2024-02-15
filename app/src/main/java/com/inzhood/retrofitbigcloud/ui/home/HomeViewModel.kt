@@ -10,28 +10,33 @@ import com.inzhood.retrofitbigcloud.bdc.BdcRepository
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: BdcRepository) : ViewModel() {
-//class HomeViewModel : ViewModel() {
+    //class HomeViewModel : ViewModel() {
     private val apiKeyValue = MutableLiveData<String>()
+
     init {
 
         val apiKey = BuildConfig.BDC_API_KEY
         apiKeyValue.value = apiKey
     }
+
     private val _locationData = MutableLiveData<BdcLocationResponse?>()
     val locationData = MutableLiveData<BdcLocationResponse?>()
     val cityLiveData = MutableLiveData<String>()
     fun fetchLocationName(latitude: Double, longitude: Double) {
         viewModelScope.launch {
-            val result = repository.getLocationData(latitude, longitude, apiKeyValue.value!!, cityLiveData)
+            val result =
+                repository.getLocationData(latitude, longitude, apiKeyValue.value!!, cityLiveData)
             if (result != null) {
                 _locationData.value = result
             } else {
-               cityLiveData.value = "Nothing was returned, check your API key in the gradle.properties file"
+                cityLiveData.value =
+                    "Nothing was returned, check your API key in the gradle.properties file"
             }
 
         }
     }
 }
+
 class HomeViewModelFactory(private val repository: BdcRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
